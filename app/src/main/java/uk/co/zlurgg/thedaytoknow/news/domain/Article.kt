@@ -1,4 +1,4 @@
-package uk.co.zlurgg.thedaytoknow.article.domain
+package uk.co.zlurgg.thedaytoknow.news.domain
 
 data class Article(
     val id: String,

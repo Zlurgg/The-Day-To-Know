@@ -1,4 +1,4 @@
-package uk.co.zlurgg.thedaytoknow.ui.theme
+package uk.co.zlurgg.thedaytoknow.core.presentation.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

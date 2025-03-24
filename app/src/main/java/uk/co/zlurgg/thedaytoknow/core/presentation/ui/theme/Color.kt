@@ -1,4 +1,4 @@
-package uk.co.zlurgg.thedaytoknow.ui.theme
+package uk.co.zlurgg.thedaytoknow.core.presentation.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF00696B)
