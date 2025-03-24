@@ -1,5 +1,8 @@
 package uk.co.zlurgg.thedaytoknow.news.domain
 
+/**
+ * Article model
+ */
 data class Article(
     val id: String,
     val title: String,
