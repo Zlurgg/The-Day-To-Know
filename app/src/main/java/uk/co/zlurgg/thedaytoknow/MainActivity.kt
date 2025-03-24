@@ -1,4 +1,4 @@
-package uk.co.zlurgg.thedaytoknow.app
+package uk.co.zlurgg.thedaytoknow
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
