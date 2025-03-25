@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">The Day To Know</string>
     <string name="search_hint">Search...</string>
+    <string name="close_hint">Clear search</string>
 </resources>
