@@ -1,9 +1,9 @@
 package uk.co.zlurgg.thedaytoknow.news.domain
 
 /**
- * Article model
+ * News model
  */
-data class Article(
+data class News(
     val id: String,
     val title: String,
     val category: String,
