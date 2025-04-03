@@ -14,5 +14,7 @@ data class News(
     val language: String,
     val publishedAt: String,
     val categories: List<String>,
-    val source: String
+    val source: String,
+    val relevanceScore: String?,
+    val locale: String
 )

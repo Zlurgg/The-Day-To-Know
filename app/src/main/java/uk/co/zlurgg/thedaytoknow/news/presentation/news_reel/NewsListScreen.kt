@@ -2,6 +2,7 @@ package uk.co.zlurgg.thedaytoknow.news.presentation.news_reel
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,7 +20,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.compose.viewmodel.koinViewModel
 import uk.co.zlurgg.thedaytoknow.core.presentation.ui.theme.TheDayToKnowTheme
 import uk.co.zlurgg.thedaytoknow.news.domain.News
+import uk.co.zlurgg.thedaytoknow.news.presentation.news_reel.components.NewsReelItem
 import uk.co.zlurgg.thedaytoknow.news.presentation.news_reel.components.NewsSearchBar
+import uk.co.zlurgg.thedaytoknow.news.presentation.news_reel.components.news
 
 @Composable
 fun NewsListScreenRoot(
@@ -65,6 +68,11 @@ private fun NewsListScreen(
                 .widthIn(max = 400.dp)
                 .fillMaxWidth()
                 .padding(16.dp)
+        )
+        Spacer(modifier = Modifier.padding(16.dp))
+        NewsReelItem(
+            news = news,
+            onClick = {},
         )
     }
 
