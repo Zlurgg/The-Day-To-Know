@@ -48,6 +48,7 @@ fun NewsReelItem(
                 var imageLoadResult by remember {
                     mutableStateOf<Result<Painter>?>(null)
                 }
+//                val painter = rememberAsyncImagePainter
 
             }
         }
