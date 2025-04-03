@@ -6,11 +6,13 @@ package uk.co.zlurgg.thedaytoknow.news.domain
 data class News(
     val id: String,
     val title: String,
-    val category: String,
-    val summary: String,
-    val country: String,
+    val description: String,
+    val keywords: String,
+    val snippet: String,
+    val url: String,
+    val imageUrl: String,
     val language: String,
-    val publisher: String,
-    val publishedDate: String,
-    val linkToArticle: String
+    val publishedAt: String,
+    val categories: List<String>,
+    val source: String
 )
