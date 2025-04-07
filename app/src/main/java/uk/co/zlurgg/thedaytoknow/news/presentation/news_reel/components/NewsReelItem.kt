@@ -26,7 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -162,7 +161,7 @@ fun LoadImage(
 
 @Preview
 @Composable
-private fun NewsListItemPreview() {
+private fun NewsReelItemPreview() {
     TheDayToKnowTheme {
         NewsReelItem(
             news = news,
@@ -171,18 +170,18 @@ private fun NewsListItemPreview() {
     }
 }
 
-val news = News(
+private val news = News(
     id = "1",
-    title = "Stellantis idles plants in Mexico and Canada due to tariffs",
-    description = "Stellantis is pausing production at the automaker's Windsor Assembly Plant in Ontario, Canada, and its Toluca Assembly Plant in Mexico.",
-    keywords = "Breaking News: Business, Autos, Transportation, Business, Stellantis NV, Stellantis NV, Canada, Environment, Donald Trump, Breaking News: Politics, Politics, Trade, Donald J. Trump, Personnel, business news",
-    snippet = "The Stellantis Windsor Assembly Plant is shown on April 1, 2025 in Windsor, Canada.\\n\\nDETROIT — Stellantis is pausing production at two assembly plants in Cana...",
-    url = "https://www.cnbc.com/2025/04/03/stellantis-idles-plants-in-mexico-and-canada-due-to-tariffs.html",
+    title = "Title 1",
+    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin ut augue maximus luctus. Donec quis nulla vitae nisi fermentum dictum nec rutrum erat. Maecenas feugiat varius libero, in vulputate metus fermentum vitae. Nullam at tincidunt ante. Phasellus sodales nulla tincidunt neque pellentesque cursus a ac magna. Vivamus dapibus nulla at felis faucibus, id tempus metus hendrerit. Praesent ut magna accumsan diam ultricies malesuada. Proin turpis urna, tempor in lacus ac, vestibulum suscipit nisi. Maecenas non sagittis lacus, non posuere augue.",
+    keywords = "test news with dummy image",
+    snippet = "",
+    url = "",
     imageUrl = "https://image.cnbcfm.com/api/v1/image/108124412-1743531991434-gettyimages-2207473532-_C3A5390CR2.jpeg?v=1743532113&w=1920&h=1080",
     language = "en",
     publishedAt = "2025-04-03T13:56:19.000000Z",
     categories = emptyList(),
-    source = "cnbc.com",
+    source = "",
     relevanceScore = null,
-    locale = "us"
+    locale = ""
 )

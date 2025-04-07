@@ -5,17 +5,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class NewsListViewModel: ViewModel() {
+class NewsReelViewModel: ViewModel() {
 
-    private val _state = MutableStateFlow(NewsListState())
+    private val _state = MutableStateFlow(NewsReelState())
     val state = _state.asStateFlow()
 
-    fun onAction(action: NewsListAction)  {
+    fun onAction(action: NewsReelAction)  {
         when(action) {
-            is NewsListAction.OnNewsClick -> {
+            is NewsReelAction.OnNewsClick -> {
 
             }
-            is NewsListAction.OnSearchQueryChange -> {
+            is NewsReelAction.OnSearchQueryChange -> {
                 _state.update {
                     it.copy(searchQuery = action.query)
                 }

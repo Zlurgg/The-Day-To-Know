@@ -6,7 +6,7 @@ import uk.co.zlurgg.thedaytoknow.news.domain.News
  * Article screen state
  * values that can change over time and have an effect on the ui
  */
-data class NewsListState(
+data class NewsReelState(
     val searchQuery: String = "Latest News",
     val searchResults: List<News> = emptyList(),
     val isLoading: Boolean = false,

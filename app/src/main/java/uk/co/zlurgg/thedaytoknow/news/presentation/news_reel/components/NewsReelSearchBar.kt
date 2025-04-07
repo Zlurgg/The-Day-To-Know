@@ -100,7 +100,7 @@ fun NewsSearchBar(
 
 @Preview
 @Composable
-private fun NewsSearchBarPreview() {
+private fun NewsReelSearchBarPreview() {
      TheDayToKnowTheme {
          NewsSearchBar(
              searchQuery = "",
