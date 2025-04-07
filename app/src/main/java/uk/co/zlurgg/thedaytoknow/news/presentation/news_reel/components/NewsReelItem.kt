@@ -1,5 +1,6 @@
 package uk.co.zlurgg.thedaytoknow.news.presentation.news_reel.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,9 +26,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,21 +57,43 @@ fun NewsReelItem(
                 .fillMaxWidth()
                 .height(IntrinsicSize.Min)
         ) {
-            Box(
-                modifier = Modifier
-                    .height(100.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                LoadImage(
-                    model = news.imageUrl
-                )
-            }
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f),
                 verticalArrangement = Arrangement.Center
             ) {
+                Text(
+                    text = news.title,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Spacer(modifier = Modifier.padding(12.dp))
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .height(200.dp)
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        LoadImage(
+                            title = news.title,
+                            model = news.imageUrl
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.padding(8.dp))
+                Text(
+                    text = news.description,
+                    style = MaterialTheme.typography.bodyMedium,
+                    maxLines = 5,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Spacer(modifier = Modifier.padding(8.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -79,19 +105,6 @@ fun NewsReelItem(
                         )
                     }
                 }
-                Text(
-                    text = news.title,
-                    style = MaterialTheme.typography.titleMedium,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = news.description,
-                    style = MaterialTheme.typography.bodyMedium,
-                    maxLines = 5,
-                    overflow = TextOverflow.Ellipsis
-                )
-
             }
         }
     }
@@ -99,6 +112,7 @@ fun NewsReelItem(
 
 @Composable
 fun LoadImage(
+    title: String,
     model: String,
 ) {
     println("image url: $model")
@@ -114,29 +128,31 @@ fun LoadImage(
                 Result.failure(Exception("Invalid image size"))
             }
         },
-        onError = {
-            it.result.throwable.printStackTrace()
-            imageLoadResult = Result.failure(it.result.throwable)
+        onError = { errorResult ->
+            val throwable = errorResult.result.throwable
+            Log.e("CoilImageError", "Error loading image: ${throwable.message}", throwable)
+            imageLoadResult = Result.failure(throwable)
         }
     )
     println("painter: $painter")
 
     when(val result = imageLoadResult) {
-        null -> CircularProgressIndicator()
+        null -> CircularProgressIndicator(modifier = Modifier.fillMaxWidth())
         else -> {
             Image(
                 painter = if(result.isSuccess) painter else {
                     painterResource(R.drawable.news_image_error)
                 },
-                contentDescription = news.title,
+                contentDescription = title,
                 contentScale = if(result.isSuccess) {
                     ContentScale.Crop
                 } else {
                     ContentScale.Fit
                 },
                 modifier = Modifier
+                    .fillMaxWidth()
                     .aspectRatio(
-                        ratio = 0.65f,
+                        ratio = 1.65f,
                         matchHeightConstraintsFirst = true
                     )
             )
