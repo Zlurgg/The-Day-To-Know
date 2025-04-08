@@ -74,17 +74,10 @@ fun NewsReelItem(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .heightIn(min = 150.dp, max = 400.dp)
-                            .fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        LoadImage(
-                            title = news.title,
-                            model = news.imageUrl
-                        )
-                    }
+                    LoadImage(
+                        title = news.title,
+                        model = news.imageUrl
+                    )
                 }
                 Spacer(modifier = Modifier.padding(8.dp))
                 Text(
@@ -139,23 +132,27 @@ fun LoadImage(
     when(val result = imageLoadResult) {
         null -> CircularProgressIndicator(modifier = Modifier.fillMaxWidth())
         else -> {
-            Image(
-                painter = if(result.isSuccess) painter else {
-                    painterResource(R.drawable.news_image_error)
-                },
-                contentDescription = title,
-                contentScale = if(result.isSuccess) {
-                    ContentScale.Crop
-                } else {
-                    ContentScale.Fit
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(
-                        ratio = 1.65f,
-                        matchHeightConstraintsFirst = true
+            if(result.isSuccess) {
+                Box(
+                    modifier = Modifier
+                        .heightIn(min = 150.dp, max = 400.dp)
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painter,
+                        contentDescription = title,
+                        contentScale =
+                            ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(
+                                ratio = 1.65f,
+                                matchHeightConstraintsFirst = true
+                            )
                     )
-            )
+                }
+            }
         }
     }
 }
